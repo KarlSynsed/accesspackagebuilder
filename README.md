@@ -24,8 +24,12 @@ A web application designed to simplify the visualization and management of acces
 
 ## Roadmap  
 
-- [Access Package Readiness Check - Where am I, what are the next Steps!] 
-- [ ] 
+- [Access Package Readiness Check - Improvements...] 
+- [Improve Mobile Version View] 
+- [Integrate Change of SOA Topics]
+- [RBAC Role Mapping]
+- [Export Options - Reports in Excel/PDF for management presentations]
+- [Marketing - Youtube Video, LinkedIN, REDDIT]
 
 ## Run Locally  
 

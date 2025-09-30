@@ -31,30 +31,37 @@
           <a href="https://accesspackagebuilder.dev" class="logo">
             <img src="/images/apb-logo.png" alt="Access Package Builder Logo" />
           </a>
-          <div class="docs-login">
-            <a href="/docs" class="docs-btn">Docs</a>
-            <a href="/auth/login" class="login-btn">Log In</a>
-            <a href="/readiness" class="login-btn">Readiness Check</a>
-          </div>
-          <div class="social-icons">
-            <a
-              href="https://www.linkedin.com/in/nico-wyss/"
-              target="_blank"
-              class="social-icon"
-            >
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a
-              href="https://github.com/nicowyss/accesspackagebuilder"
-              target="_blank"
-              class="social-icon"
-            >
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://cloudfil.ch/blog/" class="social-icon">
-              <i class="fas fa-blog"></i>
-            </a>
-          </div>
+
+          <!-- Mobile Menu Toggle -->
+          <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+
+          <!-- Nav wrapper -->
+          <nav class="nav-links">
+            <div class="docs-login">
+              <a href="/docs" class="docs-btn">Docs</a>
+              <a href="/auth/login" class="login-btn">Log In</a>
+              <a href="/readiness" class="login-btn">Readiness Check</a>
+            </div>
+            <div class="social-icons">
+              <a
+                href="https://www.linkedin.com/in/nico-wyss/"
+                target="_blank"
+                class="social-icon"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://github.com/nicowyss/accesspackagebuilder"
+                target="_blank"
+                class="social-icon"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://cloudfil.ch/blog/" class="social-icon">
+                <i class="fas fa-blog"></i>
+              </a>
+            </div>
+          </nav>
         </div>
       </header>
 
@@ -296,5 +303,13 @@
       appInsights.trackPageView();
     </script>
     <% } %>
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>

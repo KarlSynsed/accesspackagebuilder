@@ -894,3 +894,56 @@ button#next-btn:hover:not(:disabled) {
 
 
 
+/* Hamburger button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #347DFE;
+}
+
+/* Nav links container */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .header-content {
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none; /* hidden by default */
+    flex-direction: column;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    margin-top: 1rem;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: flex; /* show when toggled */
+  }
+
+  .docs-login {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .social-icons {
+    margin-top: 1rem;
+    justify-content: center;
+  }
+}
