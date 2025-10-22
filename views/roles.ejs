@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script src="/javascripts/userprofile.js"></script>
+    <script src="/javascripts/rolesAnalyzer.js"></script>
+
+    <title>Access Package Builder - Role Matrix</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <%- include('partials/navbar') %>
+      <!-- Include navbar partial -->
+      <!-- Main Content -->
+      <main class="content">
+        <header>
+          <h1>BETA: Role Matrix</h1>
+          <h3>A way to identity role-based access packages...</h3>
+        </header>
+        <!-- Feedback and Future Ideas Section -->
+        <section id="role-mapping">
+          <h2>Role-based Access Packages</h2>
+          <div>
+            <p>
+              Analyze all users in a selected department, compare their access
+              group memberships, and identify common patterns that suggest
+              shared roles (e.g., “Marketing Analyst,” “Finance Controller,”
+              etc.). From those patterns, recommend new Role Access Packages
+              that can be reused or standardized.
+            </p>
+          </div>
+          <section id="section-role-matrix">
+            <!-- Dropdown to select a department -->
+            <div id="depSelectDiv" class="dep-select-div">
+              <label for="depSelect">Select a Department:</label>
+              <select id="depSelect">
+                <option value="">-- Select a Department --</option>
+              </select>
+            </div>
+            <div id="matrixContainer">
+              <div id="rolesMatrix" class="matrix-scroll"></div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

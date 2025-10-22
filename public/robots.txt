@@ -7,5 +7,6 @@ Disallow: /buildermanual/
 Disallow: /nextSteps/
 
 Allow: /
+Allow: /readiness
 
 Sitemap: https://accesspackagebuilder.dev/sitemap.xml

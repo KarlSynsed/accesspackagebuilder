@@ -420,7 +420,7 @@ div.outerBorder {
 }
 
 /* Style the DataTable user-table */
-#section-user-table, #section-groupmembership-table, #section-guestusers-table {
+#section-user-table, #section-groupmembership-table, #section-guestusers-table, #section-role-matrix {
   background-color: #f4f4f4;
 }
 
@@ -912,4 +912,181 @@ border-radius: 8px;
 max-width: 300px;
 max-height: 500px;
 z-index: 10;
+}
+
+/* Styling for Role Mapping Page */
+#matrixContainer {
+  padding: 20px;
+  margin-right: 60px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} 
+
+.matrix-scroll {
+  max-height: 90vh;
+  overflow: auto;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+.matrix-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 1100px; /* ensure horizontal scroll for many groups */
+}
+
+.matrix-table th,
+.matrix-table td {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* sticky header */
+.matrix-table thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 3;
+
+  /* rotate text */
+  writing-mode: vertical-rl;  /* tb-rl can be replaced with vertical-rl */
+  transform: rotate(180deg);  /* adjust rotation to your needs */
+  
+  /* size & alignment */
+  line-height: 1.2;
+  vertical-align: bottom;      /* align rotated text nicely */
+  text-align: left;
+  padding: 5px;
+  white-space: normal;
+  font-size: 0.9em;
+
+    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* allow wrapping */
+
+  word-break: break-word;   
+  height: 250px;               /* fixed row height 50 / 80*/
+  max-height: 280px;  /* break long words anywhere */
+  max-width: 150px; 
+}
+
+.matrix-table thead th:first-child {
+  z-index: 5; /* higher than header row (3) and first column (4) */
+}
+
+/* sticky first column (Role/User) */
+.matrix-table th:first-child,
+.matrix-table td:first-child {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 4;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+/* Role row style */
+.role-row {
+  background: #fbfcfe;
+  font-weight: 600;
+}
+
+.role-cell {
+  padding-left: 10px;
+}
+
+/* show caret and spacing */
+.role-cell .caret {
+  display: inline-block;
+  width: 1.2em;
+  margin-right: 6px;
+  color: #2b6cb0;
+}
+
+/* User row style (indented) */
+.user-row .user-cell {
+  padding-left: 24px;
+  font-weight: 400;
+  color: #222;
+}
+
+/* loading / empty / error visuals */
+.user-row.loading td,
+.user-row.empty td,
+.user-row.error td {
+  background: #fafafa;
+  text-align: left;
+}
+
+/* group-count small meta */
+.group-count {
+  font-weight: 400;
+  font-size: 0.9em;
+  margin-left: 6px;
+  color: #666;
+}
+
+
+.dep-select-div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 300px; /* Adjust width */
+  margin: 10px auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Label styling */
+.dep-select-div label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style the dropdown */
+#depSelect {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f8f9fa;
+  appearance: none; /* Remove default arrow */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Custom dropdown arrow */
+#depSelect {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20' fill='gray'><path d='M7 10l5 5 5-5H7z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+}
+
+/* On hover */
+#depSelect:hover {
+  border-color: #007bff;
+}
+
+/* On focus */
+#depSelect:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+}
+
+/* Add a scrollbar when there are too many options */
+#depSelect option {
+  padding: 5px;
+  font-size: 14px;
+}
+
+/* Enable scrolling inside dropdown */
+#depSelect {
+  overflow-y: auto;
+  max-height: 200px; /* Adjust the max height of the dropdown */
 }

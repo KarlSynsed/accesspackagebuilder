@@ -3,12 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Dynamic SEO -->
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>" />
+    <link rel="canonical" href="<%= canonical %>" />
+
+    <!-- Open Graph (social previews) -->
+    <meta property="og:title" content="<%= title %>" />
+    <meta property="og:description" content="<%= description %>" />
+    <meta property="og:url" content="<%= canonical %>" />
+    <meta property="og:type" content="website" />
     <meta
-      name="description"
-      content="Access Package Builder helps you visualize Microsoft Entra ID governance using automation and intuitive tools."
+      property="og:image"
+      content="https://accesspackagebuilder.dev/images/apb-logo.png"
     />
-    <title>Access Package Builder</title>
-    <link rel="stylesheet" href="/stylesheets/landing.css" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%= title %>" />
+    <meta name="twitter:description" content="<%= description %>" />
+    <meta
+      name="twitter:image"
+      content="https://accesspackagebuilder.dev/images/apb-logo.png"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Access Package Builder",
+        "url": "https://accesspackagebuilder.dev",
+        "image": "https://accesspackagebuilder.dev/images/apb-logo.png,
+        "author": {
+          "@type": "Person",
+          "name": "Nico Wyss",
+          "url": "https://www.linkedin.com/in/nico-wyss/"
+        },
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "description": "Access Package Builder helps you visualize and automate Microsoft Entra ID governance setup with intuitive tools."
+      }
+    </script>
+
+    <!-- Favicon and fonts -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -23,7 +60,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="/stylesheets/landing.css" />
   </head>
+
   <body>
     <div>
       <header class="header">
@@ -119,6 +158,12 @@
       <!-- Features Section -->
       <section class="features-section" data-aos="fade-up">
         <h2 class="features-title">Features</h2>
+        <p class="features-subtitle">
+          Access Package Builder simplifies Microsoft Entra ID access package
+          automation <br />
+          with visual tools, PowerShell integration, and best practices for
+          identity governance.
+        </p>
         <p class="features-subtitle">
           Want to learn more? Check out the <a href="/docs">Docs.</a>
         </p>
@@ -261,48 +306,73 @@
     </script>
     <% if (insightsConnectionString) { %>
     <script type="text/javascript">
-      var appInsights =
-        window.appInsights ||
-        (function (a) {
-          function b(a) {
-            c[a] = function () {
-              var b = arguments;
-              c.queue.push(function () {
-                c[a].apply(c, b);
+      !(function (T, l, y) {
+        var S = T.location,
+          k = "script",
+          D = "config",
+          C = "connectionString";
+        var r = "instrumentationKey",
+          N = "disableExceptionTracking",
+          E = "ai.device.",
+          I = "toLowerCase",
+          b = "crossOrigin",
+          w = "POST",
+          e = "appInsightsSDK",
+          t = "ingestionendpoint",
+          n = "disableTelemetry";
+        var i = function (d) {
+          var g = { config: d };
+          function a(e) {
+            g[e] = function () {
+              var f = arguments;
+              g.queue.push(function () {
+                g[e].apply(g, f);
               });
             };
           }
-          var c = { config: a },
-            d = document,
-            e = window;
-          (c.queue = []), (c.version = "2.0");
-          for (
-            var f = [
-                "trackPageView",
-                "trackEvent",
-                "trackException",
-                "trackTrace",
-                "trackDependencyData",
-                "setAuthenticatedUserContext",
-                "clearAuthenticatedUserContext",
-                "flush",
-              ],
-              g = 0;
-            g < f.length;
-            g++
-          )
-            b(f[g]);
-          var h = d.createElement("script");
+          var f = [
+            "trackPageView",
+            "trackEvent",
+            "trackException",
+            "trackTrace",
+            "trackDependencyData",
+            "setAuthenticatedUserContext",
+            "clearAuthenticatedUserContext",
+            "flush",
+          ];
+          while (f.length) a(f.pop());
+          g.queue = [];
+          var h = l.createElement(k);
           h.src = "https://js.monitor.azure.com/scripts/b/ai.2.min.js";
-          d.getElementsByTagName("head")[0].appendChild(h);
-          return c;
-        })({
+          h.async = !0;
+          h.onload = function () {
+            T[e] =
+              T[e] ||
+              function () {
+                (T[e].queue = T[e].queue || []).push(arguments);
+              };
+            T[e]("init", d);
+          };
+          var s = l.getElementsByTagName(k)[0];
+          s.parentNode.insertBefore(h, s);
+          return g;
+        };
+        var o = i({
           connectionString: "<%= insightsConnectionString %>",
+          enableAutoRouteTracking: true,
+          disableAjaxTracking: false,
+          disableFetchTracking: false,
+          enableSessionStorageBuffer: true,
+          enableCorsCorrelation: true,
+          disableCookiesUsage: false,
+          samplingPercentage: 100,
         });
-      window.appInsights = appInsights;
-      appInsights.trackPageView();
+        T.appInsights = o;
+        o.trackPageView();
+      })(window, document);
     </script>
     <% } %>
+
     <script>
       const menuToggle = document.querySelector(".menu-toggle");
       const navLinks = document.querySelector(".nav-links");

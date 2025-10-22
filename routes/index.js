@@ -12,10 +12,19 @@ router.get("/", (req, res, next) => {
     if (insightsClient) {
       insightsClient.trackEvent({
         name: "LandingPageVisited",
-        properties: { page: req.originalUrl }
+        properties: {
+          page: req.originalUrl,
+          referrer: req.get("Referrer") || "direct",
+          userAgent: req.get("User-Agent"),
+        },
       });
-    }   
-    res.render("index", { title: "Access Package Builder" }); // Render your home page view or login page
+    }
+    res.render("index", {
+      title: "Access Package Builder",
+      description:
+        "Quickly analyze Microsoft Entra ID users / groups with Access Package Builder – the simplest way to start with identity governance.",
+      canonical: "https://accesspackagebuilder.dev/",
+    }); 
   }
 });
 
